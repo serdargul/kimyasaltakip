@@ -1,0 +1,70 @@
+name: Update Prices & Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  schedule:
+    # Her gün saat 06:00 UTC (TSİ 09:00) otomatik çalışır
+    - cron: '0 6 * * *'
+  workflow_dispatch: # GitHub arayüzünden manuel 'Run workflow' ile tetiklenebilir
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  update-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Frontend Dependencies
+        working-directory: ./Frontend
+        run: npm ci || npm install
+
+      - name: Run Price Update Script
+        run: node scripts/update_prices.mjs
+
+      - name: Build Frontend Application
+        working-directory: ./Frontend
+        run: npm run build
+
+      - name: Commit & Push Updated Price Data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Frontend/public/data/prices.json Frontend/public/data/history.json
+          if git diff --staged --quiet; then
+            echo "No price data changes to commit."
+          else
+            git commit -m "chore(data): auto-update chemical prices [skip ci]"
+            git push
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./Frontend/dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

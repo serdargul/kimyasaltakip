@@ -1,0 +1,12 @@
+{
+  "name": "kimyasaltakip",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm --prefix Frontend run dev",
+    "build": "npm --prefix Frontend run build",
+    "sync": "node scripts/update_prices.mjs",
+    "preview": "npm --prefix Frontend run preview"
+  }
+}
