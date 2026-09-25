@@ -6,8 +6,8 @@ on:
       - main
       - master
   schedule:
-    # Her gün saat 06:00 UTC (TSİ 09:00) otomatik çalışır
-    - cron: '0 6 * * *'
+    # Her saat başı çalışır (TSİ 06:00 / UTC 03:00'da GuideChem tam tarama yapar, diğer saatlerde canlı kur günceller)
+    - cron: '0 * * * *'
   workflow_dispatch: # GitHub arayüzünden manuel 'Run workflow' ile tetiklenebilir
 
 permissions:

@@ -178,18 +178,26 @@ async function main() {
     } catch {}
   }
 
-  const nowIso = new Date().toISOString();
-  const todayStr = nowIso.split('T')[0];
-  const nowFormatted = new Date().toLocaleDateString('tr-TR') + ' ' + 
-    new Date().toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
+  const currentHourUtc = new Date().getUTCHours();
+  // TR 06:00 is UTC 03:00. Run GuideChem scrape at 03:00 UTC, or when --full flag is provided
+  const isMorningSync = currentHourUtc === 3 || process.argv.includes('--full') || existingPrices.length === 0;
+
+  if (isMorningSync) {
+    console.log('⏰ Sabah Görevi (TSİ 06:00 / UTC 03:00): GuideChem Fiyat Taraması + Canlı Kurlar');
+  } else {
+    console.log('⚡ Saatlik Görev: Sadece Canlı Kurlar ve Hesaplamalar Güncelleniyor (GuideChem atlandı)');
+  }
 
   const finalPrices = [];
 
   for (const prod of PRODUCTS) {
-    console.log(`Processing: ${prod.displayName} (${prod.cas})...`);
-    
     const existing = existingPrices.find(p => p.id === prod.id);
-    let scraped = await scrapeGuideChem(prod.cas);
+    let scraped = null;
+    if (isMorningSync) {
+      console.log(`Scraping GuideChem: ${prod.displayName} (${prod.cas})...`);
+      scraped = await scrapeGuideChem(prod.cas);
+      await new Promise(r => setTimeout(r, 600));
+    }
 
     let currentPrice = scraped?.price ?? existing?.currentPrice ?? prod.baselinePrice;
     let priceLow = scraped?.low ?? existing?.priceLow ?? currentPrice;
