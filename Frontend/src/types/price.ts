@@ -23,6 +23,8 @@ export interface ChemicalPrice {
   fetchStatus: string;
   usdRate?: number;
   eurRate?: number;
+  usdTry?: number;
+  eurTry?: number;
 }
 
 export interface PriceHistoryPoint {

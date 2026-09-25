@@ -29,25 +29,30 @@ const PRODUCTS = [
 
 async function fetchExchangeRates() {
   console.log('Fetching exchange rates...');
-  let usdRate = 0.149;
-  let eurRate = 0.130;
+  let usdRate = 0.149;  // 1 CNY -> USD
+  let eurRate = 0.130;  // 1 CNY -> EUR
+  let usdTry = 38.45;   // 1 USD -> TRY
+  let eurTry = 42.10;   // 1 EUR -> TRY
 
   try {
-    const res = await fetch('https://open.er-api.com/v6/latest/CNY', { headers: { 'User-Agent': 'Mozilla/5.0' } });
+    const res = await fetch('https://open.er-api.com/v6/latest/USD', { headers: { 'User-Agent': 'Mozilla/5.0' } });
     if (res.ok) {
       const data = await res.json();
-      if (data?.rates?.USD && data?.rates?.EUR) {
-        usdRate = Number(data.rates.USD.toFixed(4));
-        eurRate = Number(data.rates.EUR.toFixed(4));
-        console.log(`Live rates from ExchangeRate API: 1 CNY = $${usdRate} USD, €${eurRate} EUR`);
-        return { usdRate, eurRate };
+      const rates = data?.rates;
+      if (rates?.TRY && rates?.CNY && rates?.EUR) {
+        usdTry = Number(rates.TRY.toFixed(2));
+        eurTry = Number((rates.TRY / rates.EUR).toFixed(2));
+        usdRate = Number((1 / rates.CNY).toFixed(4));
+        eurRate = Number((rates.EUR / rates.CNY).toFixed(4));
+        console.log(`Live rates: 1 USD = ${usdTry} TL, 1 EUR = ${eurTry} TL | 1 CNY = $${usdRate} USD, €${eurRate} EUR`);
+        return { usdRate, eurRate, usdTry, eurTry };
       }
     }
   } catch (err) {
     console.warn('Exchange rate API error, using fallback rates:', err.message);
   }
 
-  return { usdRate, eurRate };
+  return { usdRate, eurRate, usdTry, eurTry };
 }
 
 function parsePriceFromText(text) {
@@ -157,7 +162,7 @@ async function main() {
     fs.mkdirSync(DATA_DIR, { recursive: true });
   }
 
-  const { usdRate, eurRate } = await fetchExchangeRates();
+  const { usdRate, eurRate, usdTry, eurTry } = await fetchExchangeRates();
 
   let existingHistory = {};
   if (fs.existsSync(HISTORY_FILE)) {
@@ -232,7 +237,9 @@ async function main() {
       lastCheckedAt: nowFormatted,
       fetchStatus: 'SUCCESS',
       usdRate,
-      eurRate
+      eurRate,
+      usdTry,
+      eurTry
     });
 
     // Update history

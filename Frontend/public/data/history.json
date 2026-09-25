@@ -180,7 +180,7 @@
       "date": "2025-09-25",
       "price": 5888,
       "priceUsd": 876.72,
-      "priceEur": 770.74,
+      "priceEur": 770.15,
       "currency": "CNY",
       "unit": "TON"
     }
@@ -366,7 +366,7 @@
       "date": "2025-09-25",
       "price": 8763,
       "priceUsd": 1304.81,
-      "priceEur": 1147.08,
+      "priceEur": 1146.2,
       "currency": "CNY",
       "unit": "TON"
     }
@@ -550,9 +550,9 @@
     },
     {
       "date": "2025-09-25",
-      "price": 8300,
-      "priceUsd": 1235.87,
-      "priceEur": 1086.47,
+      "price": 8800,
+      "priceUsd": 1310.32,
+      "priceEur": 1151.04,
       "currency": "CNY",
       "unit": "TON"
     }
@@ -738,7 +738,7 @@
       "date": "2025-09-25",
       "price": 10000,
       "priceUsd": 1489,
-      "priceEur": 1309,
+      "priceEur": 1308,
       "currency": "CNY",
       "unit": "TON"
     }
@@ -924,7 +924,7 @@
       "date": "2025-09-25",
       "price": 13000,
       "priceUsd": 1935.7,
-      "priceEur": 1701.7,
+      "priceEur": 1700.4,
       "currency": "CNY",
       "unit": "TON"
     }
@@ -1110,7 +1110,7 @@
       "date": "2025-09-25",
       "price": 11950,
       "priceUsd": 1779.36,
-      "priceEur": 1564.25,
+      "priceEur": 1563.06,
       "currency": "CNY",
       "unit": "TON"
     }
@@ -1296,7 +1296,7 @@
       "date": "2025-09-25",
       "price": 4603,
       "priceUsd": 685.39,
-      "priceEur": 602.53,
+      "priceEur": 602.07,
       "currency": "CNY",
       "unit": "TON"
     }
@@ -1482,7 +1482,7 @@
       "date": "2025-09-25",
       "price": 2050,
       "priceUsd": 305.25,
-      "priceEur": 268.34,
+      "priceEur": 268.14,
       "currency": "CNY",
       "unit": "TON"
     }
@@ -1666,9 +1666,9 @@
     },
     {
       "date": "2025-09-25",
-      "price": 707,
-      "priceUsd": 105.27,
-      "priceEur": 92.55,
+      "price": 710,
+      "priceUsd": 105.72,
+      "priceEur": 92.87,
       "currency": "CNY",
       "unit": "TON"
     }
@@ -1854,7 +1854,7 @@
       "date": "2025-09-25",
       "price": 3783,
       "priceUsd": 563.29,
-      "priceEur": 495.19,
+      "priceEur": 494.82,
       "currency": "CNY",
       "unit": "TON"
     }
@@ -2040,7 +2040,7 @@
       "date": "2025-09-25",
       "price": 1260,
       "priceUsd": 187.61,
-      "priceEur": 164.93,
+      "priceEur": 164.81,
       "currency": "CNY",
       "unit": "TON"
     }
@@ -2226,7 +2226,7 @@
       "date": "2025-09-25",
       "price": 10612.5,
       "priceUsd": 1580.2,
-      "priceEur": 1389.18,
+      "priceEur": 1388.12,
       "currency": "CNY",
       "unit": "TON"
     }
@@ -2412,7 +2412,7 @@
       "date": "2025-09-25",
       "price": 8200,
       "priceUsd": 1220.98,
-      "priceEur": 1073.38,
+      "priceEur": 1072.56,
       "currency": "CNY",
       "unit": "TON"
     }
@@ -2598,7 +2598,7 @@
       "date": "2025-09-25",
       "price": 2567,
       "priceUsd": 382.23,
-      "priceEur": 336.02,
+      "priceEur": 335.76,
       "currency": "CNY",
       "unit": "TON"
     }
@@ -2784,7 +2784,7 @@
       "date": "2025-09-25",
       "price": 3725,
       "priceUsd": 554.65,
-      "priceEur": 487.6,
+      "priceEur": 487.23,
       "currency": "CNY",
       "unit": "TON"
     }

@@ -94,16 +94,18 @@ export const Home: React.FC = () => {
             </div>
           </div>
 
-          {/* Currency Rates in Header */}
-          {products.length > 0 && products[0].usdRate && products[0].eurRate && (
-            <div className="hidden md:flex items-center gap-2 text-[11px] font-semibold text-slate-600 shrink-0">
-              <span>Canlı Kurlar:</span>
-              <span className="bg-blue-50 text-blue-900 px-1.5 py-0.2 rounded border border-blue-200 font-mono font-bold text-[11px]">
-                1 CNY = ${products[0].usdRate.toFixed(4)} USD
-              </span>
-              <span className="bg-emerald-50 text-emerald-900 px-1.5 py-0.2 rounded border border-emerald-200 font-mono font-bold text-[11px]">
-                1 CNY = €{products[0].eurRate.toFixed(4)} EUR
-              </span>
+          {/* Currency Rates in Header (USD & EUR in TL) */}
+          {products.length > 0 && (
+            <div className="hidden md:flex items-center gap-2 font-semibold text-slate-700 shrink-0">
+              <span className="text-[11px] text-slate-500 font-bold uppercase tracking-wider">Canlı Kurlar:</span>
+              <div className="flex items-center gap-1 bg-blue-50 border border-blue-200 text-blue-900 px-2 py-0.5 rounded-md font-mono text-[11px] sm:text-xs font-black shadow-2xs">
+                <span className="text-blue-700 font-sans font-extrabold">$ USD:</span>
+                <span>{products[0].usdTry ? products[0].usdTry.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '38,45'} ₺</span>
+              </div>
+              <div className="flex items-center gap-1 bg-emerald-50 border border-emerald-200 text-emerald-900 px-2 py-0.5 rounded-md font-mono text-[11px] sm:text-xs font-black shadow-2xs">
+                <span className="text-emerald-700 font-sans font-extrabold">€ EUR:</span>
+                <span>{products[0].eurTry ? products[0].eurTry.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '42,10'} ₺</span>
+              </div>
             </div>
           )}
 
@@ -138,19 +140,18 @@ export const Home: React.FC = () => {
             {/* Table Column Headers */}
             <thead>
               <tr className="bg-slate-100 text-slate-800 text-[clamp(10px,1.1vh,12px)] font-black uppercase tracking-wider select-none border-b border-slate-300" style={{ height: '5.5%' }}>
-                <th className="px-2 border border-slate-300 text-center w-10 sm:w-12 bg-slate-200/90">#</th>
-                <th className="px-3 border border-slate-300 w-[30%]">KİMYASAL ÜRÜN BİLGİSİ</th>
-                <th className="px-2 border border-slate-300 text-center w-24 sm:w-32">CAS NO</th>
-                <th className="px-3 border border-slate-300 text-right w-[19%] bg-blue-50/70 text-blue-950 font-black">
+                <th className="px-3 border border-slate-300 w-[32%]">KİMYASAL ÜRÜN BİLGİSİ</th>
+                <th className="px-2 border border-slate-300 text-center w-28 sm:w-36">CAS NO</th>
+                <th className="px-3 border border-slate-300 text-right w-[20%] bg-blue-50/70 text-blue-950 font-black">
                   GÜNCEL ($ USD / TON)
                 </th>
-                <th className="px-3 border border-slate-300 text-right w-[19%] bg-emerald-50/70 text-emerald-950 font-black">
+                <th className="px-3 border border-slate-300 text-right w-[20%] bg-emerald-50/70 text-emerald-950 font-black">
                   GÜNCEL (€ EUR / TON)
                 </th>
                 <th className="px-3 border border-slate-300 text-right w-[16%] text-slate-600">
                   ÖNCEKİ ($ USD)
                 </th>
-                <th className="px-2 border border-slate-300 text-center w-20 sm:w-28">DEĞİŞİM</th>
+                <th className="px-2 border border-slate-300 text-center w-24 sm:w-32">DEĞİŞİM</th>
               </tr>
             </thead>
 
@@ -158,7 +159,7 @@ export const Home: React.FC = () => {
             <tbody className="divide-y divide-slate-300">
               {loading ? (
                 <tr>
-                  <td colSpan={7} className="text-center text-gray-500 border border-slate-300">
+                  <td colSpan={6} className="text-center text-gray-500 border border-slate-300">
                     <div className="flex items-center justify-center gap-2">
                       <div className="w-4 h-4 border-2 border-emerald-700 border-t-transparent rounded-full animate-spin"></div>
                       <span className="font-bold text-xs">Yükleniyor...</span>
@@ -167,7 +168,7 @@ export const Home: React.FC = () => {
                 </tr>
               ) : filteredProducts.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="text-center text-gray-500 font-bold text-xs border border-slate-300">
+                  <td colSpan={6} className="text-center text-gray-500 font-bold text-xs border border-slate-300">
                     Ürün bulunamadı.
                   </td>
                 </tr>
@@ -187,12 +188,7 @@ export const Home: React.FC = () => {
                       } hover:bg-sky-50/90`}
                       style={{ height: `${94.5 / Math.max(filteredProducts.length, 1)}%` }}
                     >
-                      {/* 1. Row Index */}
-                      <td className="px-1.5 sm:px-2 border border-slate-300 text-center font-mono text-slate-400 text-[clamp(10px,1.1vh,12px)] bg-slate-100/50 font-bold select-none">
-                        {idx + 1}
-                      </td>
-
-                      {/* 2. Product Name & Chemical Name */}
+                      {/* 1. Product Name & Chemical Name */}
                       <td className="px-2.5 sm:px-3 border border-slate-300 min-w-0">
                         <div className="font-black text-gray-950 uppercase tracking-tight text-[clamp(11px,1.35vh,16px)] leading-tight truncate" title={product.displayName}>
                           {product.displayName}
