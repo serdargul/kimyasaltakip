@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import type { ChemicalPrice } from '../types/price';
 import { fetchPrices, triggerManualSync } from '../services/priceApi';
-import { PriceChartModal } from '../components/PriceChartModal';
-import { RefreshCw, Table as TableIcon, Search, LineChart, ArrowUp, ArrowDown, Minus } from 'lucide-react';
+import { RefreshCw, Table as TableIcon, Search, ArrowUp, ArrowDown, Minus } from 'lucide-react';
 
 export const Home: React.FC = () => {
   const [products, setProducts] = useState<ChemicalPrice[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<ChemicalPrice | null>(null);
   const [lastUpdated, setLastUpdated] = useState<string>('');
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -143,19 +141,18 @@ export const Home: React.FC = () => {
             <thead>
               <tr className="bg-slate-100 text-slate-800 text-[11px] sm:text-xs font-black uppercase tracking-wider select-none border-b border-slate-300 h-8">
                 <th className="px-2 border border-slate-300 text-center w-10 sm:w-12 bg-slate-200/90">#</th>
-                <th className="px-3 border border-slate-300 w-1/4">KİMYASAL ÜRÜN BİLGİSİ</th>
+                <th className="px-3 border border-slate-300 w-[28%]">KİMYASAL ÜRÜN BİLGİSİ</th>
                 <th className="px-2 border border-slate-300 text-center w-28 sm:w-32">CAS NO</th>
-                <th className="px-3 border border-slate-300 text-right w-1/6 bg-blue-50/70 text-blue-950 font-black">
+                <th className="px-3 border border-slate-300 text-right w-[19%] bg-blue-50/70 text-blue-950 font-black">
                   GÜNCEL ($ USD / TON)
                 </th>
-                <th className="px-3 border border-slate-300 text-right w-1/6 bg-emerald-50/70 text-emerald-950 font-black">
+                <th className="px-3 border border-slate-300 text-right w-[19%] bg-emerald-50/70 text-emerald-950 font-black">
                   GÜNCEL (€ EUR / TON)
                 </th>
-                <th className="px-3 border border-slate-300 text-right w-28 sm:w-36 text-slate-600">
+                <th className="px-3 border border-slate-300 text-right w-[16%] text-slate-600">
                   ÖNCEKİ ($ USD)
                 </th>
                 <th className="px-2 border border-slate-300 text-center w-24 sm:w-28">DEĞİŞİM</th>
-                <th className="px-2 border border-slate-300 text-center w-20 sm:w-24">GRAFİK</th>
               </tr>
             </thead>
 
@@ -163,7 +160,7 @@ export const Home: React.FC = () => {
             <tbody className="divide-y divide-slate-300">
               {loading ? (
                 <tr>
-                  <td colSpan={8} className="text-center text-gray-500 border border-slate-300">
+                  <td colSpan={7} className="text-center text-gray-500 border border-slate-300">
                     <div className="flex items-center justify-center gap-2">
                       <div className="w-5 h-5 border-2 border-emerald-700 border-t-transparent rounded-full animate-spin"></div>
                       <span className="font-bold text-xs">Yükleniyor...</span>
@@ -172,7 +169,7 @@ export const Home: React.FC = () => {
                 </tr>
               ) : filteredProducts.length === 0 ? (
                 <tr>
-                  <td colSpan={8} className="text-center text-gray-500 font-bold text-xs border border-slate-300">
+                  <td colSpan={7} className="text-center text-gray-500 font-bold text-xs border border-slate-300">
                     Ürün bulunamadı.
                   </td>
                 </tr>
@@ -246,18 +243,6 @@ export const Home: React.FC = () => {
                           <span>%{absChange}</span>
                         </div>
                       </td>
-
-                      {/* 8. Chart Action */}
-                      <td className="px-2 border border-slate-300 text-center">
-                        <button
-                          onClick={() => setSelectedProduct(product)}
-                          title="Geçmiş Fiyat Grafiği"
-                          className="p-1 px-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded border border-slate-300 hover:border-blue-300 transition-colors inline-flex items-center gap-1 font-bold text-[11px] cursor-pointer"
-                        >
-                          <LineChart className="w-3.5 h-3.5 text-blue-600" />
-                          <span className="hidden sm:inline">Grafik</span>
-                        </button>
-                      </td>
                     </tr>
                   );
                 })
@@ -277,12 +262,6 @@ export const Home: React.FC = () => {
           </span>
         </footer>
       </div>
-
-      {/* Price Chart Modal */}
-      <PriceChartModal
-        product={selectedProduct}
-        onClose={() => setSelectedProduct(null)}
-      />
     </div>
   );
 };
