@@ -45,6 +45,14 @@ export const PriceChartModal: React.FC<Props> = ({ product, onClose }) => {
     };
   }, [product, range]);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
   if (!product) return null;
 
   const ranges: { label: string; value: TimeRange }[] = [
@@ -82,35 +90,41 @@ export const PriceChartModal: React.FC<Props> = ({ product, onClose }) => {
   });
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-fade-in">
-      <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh]">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/40 backdrop-blur-xs animate-fade-in"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl border border-gray-100 w-full max-w-2xl overflow-hidden flex flex-col max-h-[92vh]">
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-gray-50/50">
-          <div>
-            <h2 className="text-lg font-bold text-gray-900 tracking-wide uppercase flex items-center gap-2">
-              <TrendingUp className="w-5 h-5 text-blue-600" />
-              {product.displayName}
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-gray-100 bg-gray-50/50">
+          <div className="min-w-0 pr-2">
+            <h2 className="text-base sm:text-lg font-bold text-gray-900 tracking-wide uppercase flex items-center gap-2 truncate">
+              <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 shrink-0" />
+              <span className="truncate">{product.displayName}</span>
             </h2>
-            <p className="text-xs text-gray-500 font-medium mt-0.5">
+            <p className="text-[11px] sm:text-xs text-gray-500 font-medium mt-0.5 truncate">
               {product.chemicalName} • {currencyMode}/{product.unit}
             </p>
           </div>
 
           <button
             onClick={onClose}
-            className="p-1.5 text-gray-400 hover:text-gray-700 hover:bg-gray-200/60 rounded-full transition-all cursor-pointer"
+            className="p-1.5 text-gray-400 hover:text-gray-700 hover:bg-gray-200/60 rounded-full transition-all cursor-pointer shrink-0"
+            title="Kapat"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Time Range & Currency Selectors */}
-        <div className="flex flex-wrap items-center justify-between px-6 py-3 border-b border-gray-100 bg-white gap-2">
+        <div className="flex flex-wrap items-center justify-between px-3 sm:px-6 py-2.5 sm:py-3 border-b border-gray-100 bg-white gap-2">
           {/* Currency Toggle */}
-          <div className="flex bg-slate-100 p-1 rounded-lg space-x-1">
+          <div className="flex bg-slate-100 p-0.5 sm:p-1 rounded-lg space-x-1">
             <button
               onClick={() => setCurrencyMode('USD')}
-              className={`px-2.5 py-1 text-xs font-bold rounded-md transition-all cursor-pointer ${
+              className={`px-2 sm:px-2.5 py-1 text-xs font-bold rounded-md transition-all cursor-pointer ${
                 currencyMode === 'USD' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -118,7 +132,7 @@ export const PriceChartModal: React.FC<Props> = ({ product, onClose }) => {
             </button>
             <button
               onClick={() => setCurrencyMode('EUR')}
-              className={`px-2.5 py-1 text-xs font-bold rounded-md transition-all cursor-pointer ${
+              className={`px-2 sm:px-2.5 py-1 text-xs font-bold rounded-md transition-all cursor-pointer ${
                 currencyMode === 'EUR' ? 'bg-emerald-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -126,7 +140,7 @@ export const PriceChartModal: React.FC<Props> = ({ product, onClose }) => {
             </button>
             <button
               onClick={() => setCurrencyMode('CNY')}
-              className={`px-2.5 py-1 text-xs font-bold rounded-md transition-all cursor-pointer ${
+              className={`px-2 sm:px-2.5 py-1 text-xs font-bold rounded-md transition-all cursor-pointer ${
                 currencyMode === 'CNY' ? 'bg-slate-700 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -135,12 +149,12 @@ export const PriceChartModal: React.FC<Props> = ({ product, onClose }) => {
           </div>
 
           {/* Range Selector */}
-          <div className="flex bg-gray-100/80 p-1 rounded-lg space-x-1">
+          <div className="flex bg-gray-100/80 p-0.5 sm:p-1 rounded-lg space-x-1 overflow-x-auto max-w-full">
             {ranges.map((r) => (
               <button
                 key={r.value}
                 onClick={() => setRange(r.value)}
-                className={`px-3 py-1 text-xs font-semibold rounded-md transition-all cursor-pointer ${
+                className={`px-2 sm:px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-md transition-all cursor-pointer whitespace-nowrap ${
                   range === r.value
                     ? 'bg-white text-blue-600 shadow-sm'
                     : 'text-gray-600 hover:text-gray-900'
@@ -153,7 +167,7 @@ export const PriceChartModal: React.FC<Props> = ({ product, onClose }) => {
         </div>
 
         {/* Chart Body */}
-        <div className="p-6 flex-1 min-h-[300px] flex items-center justify-center">
+        <div className="p-3 sm:p-6 flex-1 min-h-[260px] sm:min-h-[300px] flex items-center justify-center">
           {loading ? (
             <div className="flex flex-col items-center gap-2 text-gray-400">
               <div className="w-6 h-6 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
@@ -164,7 +178,7 @@ export const PriceChartModal: React.FC<Props> = ({ product, onClose }) => {
               Bu zaman aralığı için henüz fiyat geçmişi verisi bulunmuyor.
             </div>
           ) : (
-            <div className="w-full h-[320px]">
+            <div className="w-full h-[260px] sm:h-[320px]">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={formattedChartData} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F3F4F6" />

@@ -39,7 +39,9 @@ export const ChemicalPriceCard: React.FC<Props> = ({ product, onOpenChart }) => 
   };
 
   return (
-    <div className={`bg-white rounded-xl border transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 flex flex-col justify-between p-3.5 relative overflow-hidden group ${
+    <div 
+      onClick={() => onOpenChart(product)}
+      className={`bg-white rounded-xl border transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 flex flex-col justify-between p-3.5 relative overflow-hidden group cursor-pointer ${
       isUp ? 'border-gray-200 hover:border-emerald-300' :
       isDown ? 'border-gray-200 hover:border-rose-300' :
       'border-gray-200 hover:border-blue-300'
@@ -63,7 +65,10 @@ export const ChemicalPriceCard: React.FC<Props> = ({ product, onOpenChart }) => 
         </div>
 
         <button
-          onClick={() => onOpenChart(product)}
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpenChart(product);
+          }}
           title="Fiyat Grafiği Göster"
           className="p-1.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors border border-slate-100 hover:border-blue-200 shrink-0 cursor-pointer"
         >
