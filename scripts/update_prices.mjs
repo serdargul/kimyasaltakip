@@ -154,7 +154,7 @@ function generateHistoryPoints(basePrice, usdRate, eurRate) {
     });
   });
 
-  return points;
+  return points.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 }
 
 async function main() {
@@ -178,14 +178,27 @@ async function main() {
     } catch {}
   }
 
-  const currentHourUtc = new Date().getUTCHours();
-  // TR 06:00 is UTC 03:00. Run GuideChem scrape at 03:00 UTC, or when --full flag is provided
-  const isMorningSync = currentHourUtc === 3 || process.argv.includes('--full') || existingPrices.length === 0;
+  const now = new Date();
+  const todayStr = new Intl.DateTimeFormat('fr-CA', { timeZone: 'Europe/Istanbul' }).format(now); // 'YYYY-MM-DD'
+  const nowFormatted = new Intl.DateTimeFormat('tr-TR', {
+    timeZone: 'Europe/Istanbul',
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  }).format(now);
+
+  const currentHourUtc = now.getUTCHours();
+  const lastScrapedDate = existingPrices[0]?.sourceDate;
+  const isNewDay = !lastScrapedDate || lastScrapedDate !== todayStr;
+  const isMorningWindow = currentHourUtc >= 3 && currentHourUtc <= 6;
+  const isMorningSync = isNewDay || isMorningWindow || process.argv.includes('--full') || existingPrices.length === 0;
 
   if (isMorningSync) {
-    console.log('⏰ Sabah Görevi (TSİ 06:00 / UTC 03:00): GuideChem Fiyat Taraması + Canlı Kurlar');
+    console.log(`⏰ GuideChem Fiyat Taraması + Canlı Kurlar Başlatılıyor (Tarih: ${todayStr}, Saat: ${nowFormatted})`);
   } else {
-    console.log('⚡ Saatlik Görev: Sadece Canlı Kurlar ve Hesaplamalar Güncelleniyor (GuideChem atlandı)');
+    console.log(`⚡ Saatlik Görev: Sadece Canlı Kurlar ve Hesaplamalar Güncelleniyor (GuideChem atlandı, son tarama: ${lastScrapedDate})`);
   }
 
   const finalPrices = [];
@@ -221,6 +234,8 @@ async function main() {
     const priceLowEur = Number((priceLow * eurRate).toFixed(2));
     const priceHighEur = Number((priceHigh * eurRate).toFixed(2));
 
+    const sourceDate = isMorningSync && scraped?.price ? todayStr : (existing?.sourceDate || todayStr);
+
     finalPrices.push({
       id: prod.id,
       displayName: prod.displayName,
@@ -241,7 +256,7 @@ async function main() {
       currency: 'CNY',
       unit: 'TON',
       changePercent,
-      sourceDate: todayStr,
+      sourceDate,
       lastCheckedAt: nowFormatted,
       fetchStatus: 'SUCCESS',
       usdRate,
@@ -255,8 +270,8 @@ async function main() {
       existingHistory[prod.id] = generateHistoryPoints(currentPrice, usdRate, eurRate);
     } else {
       const list = existingHistory[prod.id];
-      const hasToday = list.some(pt => pt.date === todayStr);
-      if (!hasToday) {
+      const todayPt = list.find(pt => pt.date === todayStr);
+      if (!todayPt) {
         list.push({
           date: todayStr,
           price: currentPrice,
@@ -266,11 +281,12 @@ async function main() {
           unit: 'TON'
         });
       } else {
-        const lastPt = list[list.length - 1];
-        lastPt.price = currentPrice;
-        lastPt.priceUsd = currentPriceUsd;
-        lastPt.priceEur = currentPriceEur;
+        todayPt.price = currentPrice;
+        todayPt.priceUsd = currentPriceUsd;
+        todayPt.priceEur = currentPriceEur;
       }
+      // Keep history sorted chronologically
+      list.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
     }
 
     await new Promise(r => setTimeout(r, 600));

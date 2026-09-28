@@ -96,7 +96,9 @@ export async function fetchPriceHistory(id: number, range: TimeRange = '30d'): P
         cutoffDate.setDate(now.getDate() - 30);
     }
 
-    return points.filter((p) => new Date(p.date) >= cutoffDate);
+    return points
+      .filter((p) => new Date(p.date) >= cutoffDate)
+      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
   } catch (error) {
     console.error(`Failed to fetch price history for ID ${id}:`, error);
     return [];

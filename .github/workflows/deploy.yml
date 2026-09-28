@@ -6,9 +6,15 @@ on:
       - main
       - master
   schedule:
-    # Her saat başı çalışır (TSİ 06:00 / UTC 03:00'da GuideChem tam tarama yapar, diğer saatlerde canlı kur günceller)
-    - cron: '0 * * * *'
-  workflow_dispatch: # GitHub arayüzünden manuel 'Run workflow' ile tetiklenebilir
+    # Her saat başı çalışır (yeni günde veya sabah saatlerinde GuideChem tam tarama yapar, diğer saatlerde canlı kur günceller)
+    - cron: '15 * * * *'
+  workflow_dispatch:
+    inputs:
+      force_full_scrape:
+        description: 'Tüm kimyasalları GuideChem üzerinden zorla tara'
+        required: false
+        type: boolean
+        default: true
 
 permissions:
   contents: write
@@ -39,7 +45,12 @@ jobs:
         run: npm ci || npm install
 
       - name: Run Price Update Script
-        run: node scripts/update_prices.mjs
+        run: |
+          if [ "${{ github.event.inputs.force_full_scrape }}" = "true" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            node scripts/update_prices.mjs --full
+          else
+            node scripts/update_prices.mjs
+          fi
 
       - name: Build Frontend Application
         working-directory: ./Frontend
