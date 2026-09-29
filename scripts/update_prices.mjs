@@ -10,21 +10,21 @@ const PRICES_FILE = path.join(DATA_DIR, 'prices.json');
 const HISTORY_FILE = path.join(DATA_DIR, 'history.json');
 
 const PRODUCTS = [
-  { id: 1, displayName: 'SİTRİK ASİT MONO', chemicalName: 'Citric Acid Monohydrate', cas: '5949-29-1', baselinePrice: 5888, prevPrice: 5850 },
-  { id: 2, displayName: 'ASETON', chemicalName: 'Acetone', cas: '67-64-1', baselinePrice: 8763, prevPrice: 8700 },
-  { id: 3, displayName: 'GLİSERİN', chemicalName: 'Glycerin', cas: '56-81-5', baselinePrice: 8800, prevPrice: 8750 },
-  { id: 4, displayName: 'LARSA (LABSA)', chemicalName: 'Dodecylbenzenesulfonic Acid', cas: '27176-87-0', baselinePrice: 10000, prevPrice: 9950 },
-  { id: 5, displayName: 'SLES 70', chemicalName: 'Sodium Lauryl Ether Sulfate', cas: '68585-34-2', baselinePrice: 13000, prevPrice: 12900 },
-  { id: 6, displayName: 'SODYUM KLORİT %31', chemicalName: 'Sodium Chlorite', cas: '7758-19-2', baselinePrice: 3900, prevPrice: 3880 },
-  { id: 7, displayName: 'ASETİK ASİT %80', chemicalName: 'Acetic Acid', cas: '64-19-7', baselinePrice: 4603, prevPrice: 4580 },
-  { id: 8, displayName: 'FORMİK ASİT %85', chemicalName: 'Formic Acid', cas: '64-18-6', baselinePrice: 2050, prevPrice: 2040 },
-  { id: 9, displayName: 'HİDROJEN PEROKSİT %50', chemicalName: 'Hydrogen Peroxide', cas: '7722-84-1', baselinePrice: 5500, prevPrice: 5450 },
-  { id: 10, displayName: 'OKSALİK ASİT %99', chemicalName: 'Oxalic Acid', cas: '144-62-7', baselinePrice: 3525, prevPrice: 3500 },
-  { id: 11, displayName: 'HAFİF SODA', chemicalName: 'Soda Ash Light', cas: '497-19-8', baselinePrice: 1460, prevPrice: 1450 },
-  { id: 12, displayName: 'PEG 400', chemicalName: 'Polyethylene Glycol 400', cas: '25322-68-3', baselinePrice: 8300, prevPrice: 8250 },
-  { id: 13, displayName: 'SODYUM HİDROSÜLFİT %88', chemicalName: 'Sodium Hydrosulfite', cas: '7775-14-6', baselinePrice: 2600, prevPrice: 2580 },
-  { id: 14, displayName: 'SODYUM HİDROKSİT %48', chemicalName: 'Sodium Hydroxide', cas: '1310-73-2', baselinePrice: 2567, prevPrice: 2550 },
-  { id: 15, displayName: 'SODYUM METABİSÜLFİT', chemicalName: 'Sodium Metabisulfite', cas: '7681-57-4', baselinePrice: 3725, prevPrice: 3700 }
+  { id: 1, displayName: 'SİTRİK ASİT MONO', chemicalName: 'Citric Acid Monohydrate', cas: '5949-29-1', baselinePrice: 5888, prevPrice: 5850, specKeywords: ['mono', '99%'] },
+  { id: 2, displayName: 'ASETON', chemicalName: 'Acetone', cas: '67-64-1', baselinePrice: 8763, prevPrice: 8700, specKeywords: ['first-class'] },
+  { id: 3, displayName: 'GLİSERİN', chemicalName: 'Glycerin', cas: '56-81-5', baselinePrice: 8800, prevPrice: 8750, specKeywords: ['95%', '99.5%', 'glycerol'] },
+  { id: 4, displayName: 'LARSA (LABSA)', chemicalName: 'Dodecylbenzenesulfonic Acid', cas: '27176-87-0', baselinePrice: 10000, prevPrice: 9950, specKeywords: ['≥96%', '96%'] },
+  { id: 5, displayName: 'SLES 70', chemicalName: 'Sodium Lauryl Ether Sulfate', cas: '68585-34-2', baselinePrice: 13000, prevPrice: 12900, specKeywords: ['70', 'industrial'] },
+  { id: 6, displayName: 'SODYUM KLORİT %31', chemicalName: 'Sodium Chlorite', cas: '7758-19-2', baselinePrice: 3900, prevPrice: 3880, specKeywords: ['31%', 'liquid'] },
+  { id: 7, displayName: 'ASETİK ASİT %80', chemicalName: 'Acetic Acid', cas: '64-19-7', baselinePrice: 4603, prevPrice: 4580, specKeywords: ['first-class', 'industrial'] },
+  { id: 8, displayName: 'FORMİK ASİT %85', chemicalName: 'Formic Acid', cas: '64-18-6', baselinePrice: 2050, prevPrice: 2040, specKeywords: ['85%', '≥85'] },
+  { id: 9, displayName: 'HİDROJEN PEROKSİT %50', chemicalName: 'Hydrogen Peroxide', cas: '7722-84-1', baselinePrice: 5500, prevPrice: 5450, specKeywords: ['50%'] },
+  { id: 10, displayName: 'OKSALİK ASİT %99', chemicalName: 'Oxalic Acid', cas: '144-62-7', baselinePrice: 3525, prevPrice: 3500, specKeywords: ['99%', '99.6%'] },
+  { id: 11, displayName: 'HAFİF SODA', chemicalName: 'Soda Ash Light', cas: '497-19-8', baselinePrice: 1460, prevPrice: 1450, specKeywords: ['light', 'industrial'] },
+  { id: 12, displayName: 'PEG 400', chemicalName: 'Polyethylene Glycol 400', cas: '25322-68-3', baselinePrice: 8300, prevPrice: 8250, specKeywords: ['400', 'standard'] },
+  { id: 13, displayName: 'SODYUM HİDROSÜLFİT %88', chemicalName: 'Sodium Hydrosulfite', cas: '7775-14-6', baselinePrice: 2600, prevPrice: 2580, specKeywords: ['88%'] },
+  { id: 14, displayName: 'SODYUM HİDROKSİT %48', chemicalName: 'Sodium Hydroxide', cas: '1310-73-2', baselinePrice: 2567, prevPrice: 2550, specKeywords: ['flakes', '48%', 'liquid', '99%'] },
+  { id: 15, displayName: 'SODYUM METABİSÜLFİT', chemicalName: 'Sodium Metabisulfite', cas: '7681-57-4', baselinePrice: 3725, prevPrice: 3700, specKeywords: ['96%', 'industrial'] }
 ];
 
 async function fetchExchangeRates() {
@@ -75,8 +75,8 @@ function parsePriceFromText(text) {
   return null;
 }
 
-async function scrapeGuideChem(cas) {
-  const url = `https://www.guidechem.com/price/en/${cas}.html`;
+async function scrapeGuideChem(prod) {
+  const url = `https://www.guidechem.com/price/en/${prod.cas}.html`;
   try {
     const res = await fetch(url, {
       headers: {
@@ -90,18 +90,59 @@ async function scrapeGuideChem(cas) {
     const html = await res.text();
 
     const rowMatches = [...html.matchAll(/<li[^>]*>[\s\S]*?bx_ls_k1[^>]*>([\s\S]*?)<\/span>[\s\S]*?bx_ls_k2[^>]*>([\s\S]*?)<\/span>([\s\S]*?)<\/li>/gi)];
+    const candidates = [];
+
     if (rowMatches.length > 0) {
       for (const row of rowMatches) {
+        const k1 = row[1].replace(/<[^>]*>/g, '').toLowerCase().trim();
+        const k2 = row[2].replace(/<[^>]*>/g, '').toLowerCase().trim();
         const fullLi = row[0];
+        const rowText = `${k1} ${k2}`;
+
         const priceSpans = [...fullLi.matchAll(/bx_ls_k[345][^>]*>([\s\S]*?)<\/span>/gi)];
         for (let i = priceSpans.length - 1; i >= 0; i--) {
           const rawPrice = priceSpans[i][1].replace(/<[^>]*>/g, '').trim();
           if (rawPrice && rawPrice !== '-') {
             const parsed = parsePriceFromText(rawPrice);
-            if (parsed) return parsed;
+            if (parsed && parsed.price > 0) {
+              let score = 0;
+              if (prod.specKeywords) {
+                for (const kw of prod.specKeywords) {
+                  if (rowText.includes(kw.toLowerCase())) {
+                    score += 10;
+                  }
+                }
+              }
+
+              // Penalty for opposite form (e.g. solid when liquid is desired)
+              if (prod.specKeywords?.includes('31%') || prod.specKeywords?.includes('liquid')) {
+                if (rowText.includes('solid') || rowText.includes('80%')) {
+                  score -= 50;
+                }
+              }
+
+              const baseline = prod.baselinePrice || prod.prevPrice || parsed.price;
+              const diffRatio = Math.abs(parsed.price - baseline) / baseline;
+
+              candidates.push({
+                ...parsed,
+                rowText,
+                score,
+                diffRatio
+              });
+            }
           }
         }
       }
+    }
+
+    if (candidates.length > 0) {
+      // Rank by spec match score first, then closeness to expected baseline market price
+      candidates.sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        return a.diffRatio - b.diffRatio;
+      });
+      return candidates[0];
     }
 
     const bannerMatch = html.match(/<li[^>]*class="[^"]*i_rd_x1[^"]*"[^>]*>[\s\S]*?<em>([\d\.]+)<\/em>/i);
@@ -110,21 +151,9 @@ async function scrapeGuideChem(cas) {
       if (!isNaN(p)) return { price: p, low: p, high: p };
     }
 
-    const jsonLdMatch = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/i);
-    if (jsonLdMatch) {
-      try {
-        const json = JSON.parse(jsonLdMatch[1]);
-        const offers = json?.offers || json?.['@graph']?.find(x => x.offers)?.offers;
-        if (offers?.price) {
-          const p = parseFloat(offers.price);
-          if (!isNaN(p)) return { price: p, low: p, high: p };
-        }
-      } catch {}
-    }
-
     return null;
   } catch (err) {
-    console.warn(`Scrape warning for ${cas}:`, err.message);
+    console.warn(`Scrape warning for ${prod.displayName} (${prod.cas}):`, err.message);
     return null;
   }
 }
@@ -208,15 +237,23 @@ async function main() {
     let scraped = null;
     if (isMorningSync) {
       console.log(`Scraping GuideChem: ${prod.displayName} (${prod.cas})...`);
-      scraped = await scrapeGuideChem(prod.cas);
+      scraped = await scrapeGuideChem(prod);
       await new Promise(r => setTimeout(r, 600));
     }
 
     let currentPrice = scraped?.price ?? existing?.currentPrice ?? prod.baselinePrice;
     let priceLow = scraped?.low ?? existing?.priceLow ?? currentPrice;
     let priceHigh = scraped?.high ?? existing?.priceHigh ?? currentPrice;
-    let previousPrice = existing?.currentPrice && existing.currentPrice !== currentPrice
-      ? existing.currentPrice
+
+    // Sanity check: If existing price was an outlier from wrong grade mismatch (>80% off), recover using prevPrice
+    let validExistingPrice = existing?.currentPrice;
+    if (validExistingPrice && Math.abs(validExistingPrice - prod.baselinePrice) / prod.baselinePrice > 0.8) {
+      console.warn(`[Outlier Corrected] ${prod.displayName}: Previous recorded price ${validExistingPrice} was from a mismatched grade. Resetting to valid baseline.`);
+      validExistingPrice = prod.prevPrice || prod.baselinePrice;
+    }
+
+    let previousPrice = validExistingPrice && validExistingPrice !== currentPrice
+      ? validExistingPrice
       : (existing?.previousPrice ?? prod.prevPrice);
 
     let changePercent = 0;
