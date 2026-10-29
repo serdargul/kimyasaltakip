@@ -20,12 +20,12 @@
     "unit": "TON",
     "changePercent": -0.25,
     "sourceDate": "2026-10-29",
-    "lastCheckedAt": "29.10.2026 00:04",
+    "lastCheckedAt": "29.10.2026 03:56",
     "fetchStatus": "SUCCESS",
     "usdRate": 0.1497,
     "eurRate": 0.1343,
-    "usdTry": 49.81,
-    "eurTry": 55.5
+    "usdTry": 49.86,
+    "eurTry": 55.57
   },
   {
     "id": 2,
@@ -48,12 +48,12 @@
     "unit": "TON",
     "changePercent": -0.57,
     "sourceDate": "2026-10-29",
-    "lastCheckedAt": "29.10.2026 00:04",
+    "lastCheckedAt": "29.10.2026 03:56",
     "fetchStatus": "SUCCESS",
     "usdRate": 0.1497,
     "eurRate": 0.1343,
-    "usdTry": 49.81,
-    "eurTry": 55.5
+    "usdTry": 49.86,
+    "eurTry": 55.57
   },
   {
     "id": 3,
@@ -76,12 +76,12 @@
     "unit": "TON",
     "changePercent": -1.02,
     "sourceDate": "2026-10-29",
-    "lastCheckedAt": "29.10.2026 00:04",
+    "lastCheckedAt": "29.10.2026 03:56",
     "fetchStatus": "SUCCESS",
     "usdRate": 0.1497,
     "eurRate": 0.1343,
-    "usdTry": 49.81,
-    "eurTry": 55.5
+    "usdTry": 49.86,
+    "eurTry": 55.57
   },
   {
     "id": 4,
@@ -104,12 +104,12 @@
     "unit": "TON",
     "changePercent": 0.5,
     "sourceDate": "2026-10-29",
-    "lastCheckedAt": "29.10.2026 00:04",
+    "lastCheckedAt": "29.10.2026 03:56",
     "fetchStatus": "SUCCESS",
     "usdRate": 0.1497,
     "eurRate": 0.1343,
-    "usdTry": 49.81,
-    "eurTry": 55.5
+    "usdTry": 49.86,
+    "eurTry": 55.57
   },
   {
     "id": 5,
@@ -132,12 +132,12 @@
     "unit": "TON",
     "changePercent": 0.78,
     "sourceDate": "2026-10-29",
-    "lastCheckedAt": "29.10.2026 00:04",
+    "lastCheckedAt": "29.10.2026 03:56",
     "fetchStatus": "SUCCESS",
     "usdRate": 0.1497,
     "eurRate": 0.1343,
-    "usdTry": 49.81,
-    "eurTry": 55.5
+    "usdTry": 49.86,
+    "eurTry": 55.57
   },
   {
     "id": 6,
@@ -160,12 +160,12 @@
     "unit": "TON",
     "changePercent": 0.52,
     "sourceDate": "2026-10-29",
-    "lastCheckedAt": "29.10.2026 00:04",
+    "lastCheckedAt": "29.10.2026 03:56",
     "fetchStatus": "SUCCESS",
     "usdRate": 0.1497,
     "eurRate": 0.1343,
-    "usdTry": 49.81,
-    "eurTry": 55.5
+    "usdTry": 49.86,
+    "eurTry": 55.57
   },
   {
     "id": 7,
@@ -188,12 +188,12 @@
     "unit": "TON",
     "changePercent": 0.18,
     "sourceDate": "2026-10-29",
-    "lastCheckedAt": "29.10.2026 00:04",
+    "lastCheckedAt": "29.10.2026 03:56",
     "fetchStatus": "SUCCESS",
     "usdRate": 0.1497,
     "eurRate": 0.1343,
-    "usdTry": 49.81,
-    "eurTry": 55.5
+    "usdTry": 49.86,
+    "eurTry": 55.57
   },
   {
     "id": 8,
@@ -216,12 +216,12 @@
     "unit": "TON",
     "changePercent": -1.22,
     "sourceDate": "2026-10-29",
-    "lastCheckedAt": "29.10.2026 00:04",
+    "lastCheckedAt": "29.10.2026 03:56",
     "fetchStatus": "SUCCESS",
     "usdRate": 0.1497,
     "eurRate": 0.1343,
-    "usdTry": 49.81,
-    "eurTry": 55.5
+    "usdTry": 49.86,
+    "eurTry": 55.57
   },
   {
     "id": 9,
@@ -244,12 +244,12 @@
     "unit": "TON",
     "changePercent": 0.92,
     "sourceDate": "2026-10-29",
-    "lastCheckedAt": "29.10.2026 00:04",
+    "lastCheckedAt": "29.10.2026 03:56",
     "fetchStatus": "SUCCESS",
     "usdRate": 0.1497,
     "eurRate": 0.1343,
-    "usdTry": 49.81,
-    "eurTry": 55.5
+    "usdTry": 49.86,
+    "eurTry": 55.57
   },
   {
     "id": 10,
@@ -272,12 +272,12 @@
     "unit": "TON",
     "changePercent": 0.24,
     "sourceDate": "2026-10-29",
-    "lastCheckedAt": "29.10.2026 00:04",
+    "lastCheckedAt": "29.10.2026 03:56",
     "fetchStatus": "SUCCESS",
     "usdRate": 0.1497,
     "eurRate": 0.1343,
-    "usdTry": 49.81,
-    "eurTry": 55.5
+    "usdTry": 49.86,
+    "eurTry": 55.57
   },
   {
     "id": 11,
@@ -300,12 +300,12 @@
     "unit": "TON",
     "changePercent": 1.37,
     "sourceDate": "2026-10-29",
-    "lastCheckedAt": "29.10.2026 00:04",
+    "lastCheckedAt": "29.10.2026 03:56",
     "fetchStatus": "SUCCESS",
     "usdRate": 0.1497,
     "eurRate": 0.1343,
-    "usdTry": 49.81,
-    "eurTry": 55.5
+    "usdTry": 49.86,
+    "eurTry": 55.57
   },
   {
     "id": 12,
@@ -328,12 +328,12 @@
     "unit": "TON",
     "changePercent": -12.17,
     "sourceDate": "2026-10-29",
-    "lastCheckedAt": "29.10.2026 00:04",
+    "lastCheckedAt": "29.10.2026 03:56",
     "fetchStatus": "SUCCESS",
     "usdRate": 0.1497,
     "eurRate": 0.1343,
-    "usdTry": 49.81,
-    "eurTry": 55.5
+    "usdTry": 49.86,
+    "eurTry": 55.57
   },
   {
     "id": 13,
@@ -356,12 +356,12 @@
     "unit": "TON",
     "changePercent": 13.46,
     "sourceDate": "2026-10-29",
-    "lastCheckedAt": "29.10.2026 00:04",
+    "lastCheckedAt": "29.10.2026 03:56",
     "fetchStatus": "SUCCESS",
     "usdRate": 0.1497,
     "eurRate": 0.1343,
-    "usdTry": 49.81,
-    "eurTry": 55.5
+    "usdTry": 49.86,
+    "eurTry": 55.57
   },
   {
     "id": 14,
@@ -384,12 +384,12 @@
     "unit": "TON",
     "changePercent": 0.67,
     "sourceDate": "2026-10-29",
-    "lastCheckedAt": "29.10.2026 00:04",
+    "lastCheckedAt": "29.10.2026 03:56",
     "fetchStatus": "SUCCESS",
     "usdRate": 0.1497,
     "eurRate": 0.1343,
-    "usdTry": 49.81,
-    "eurTry": 55.5
+    "usdTry": 49.86,
+    "eurTry": 55.57
   },
   {
     "id": 15,
@@ -412,11 +412,11 @@
     "unit": "TON",
     "changePercent": 2.8,
     "sourceDate": "2026-10-29",
-    "lastCheckedAt": "29.10.2026 00:04",
+    "lastCheckedAt": "29.10.2026 03:56",
     "fetchStatus": "SUCCESS",
     "usdRate": 0.1497,
     "eurRate": 0.1343,
-    "usdTry": 49.81,
-    "eurTry": 55.5
+    "usdTry": 49.86,
+    "eurTry": 55.57
   }
 ]
