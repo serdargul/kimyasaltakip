@@ -527,6 +527,14 @@
       "priceEur": 789.08,
       "currency": "CNY",
       "unit": "TON"
+    },
+    {
+      "date": "2026-11-10",
+      "price": 5875.5,
+      "priceUsd": 878.97,
+      "priceEur": 784.38,
+      "currency": "CNY",
+      "unit": "TON"
     }
   ],
   "2": [
@@ -1055,6 +1063,14 @@
       "price": 8750,
       "priceUsd": 1309.88,
       "priceEur": 1175.13,
+      "currency": "CNY",
+      "unit": "TON"
+    },
+    {
+      "date": "2026-11-10",
+      "price": 8750,
+      "priceUsd": 1309,
+      "priceEur": 1168.13,
       "currency": "CNY",
       "unit": "TON"
     }
@@ -1587,6 +1603,14 @@
       "priceEur": 1175.13,
       "currency": "CNY",
       "unit": "TON"
+    },
+    {
+      "date": "2026-11-10",
+      "price": 8750,
+      "priceUsd": 1309,
+      "priceEur": 1168.13,
+      "currency": "CNY",
+      "unit": "TON"
     }
   ],
   "4": [
@@ -2099,6 +2123,14 @@
       "price": 10000,
       "priceUsd": 1497,
       "priceEur": 1343,
+      "currency": "CNY",
+      "unit": "TON"
+    },
+    {
+      "date": "2026-11-10",
+      "price": 10000,
+      "priceUsd": 1496,
+      "priceEur": 1335,
       "currency": "CNY",
       "unit": "TON"
     }
@@ -2631,6 +2663,14 @@
       "priceEur": 1745.9,
       "currency": "CNY",
       "unit": "TON"
+    },
+    {
+      "date": "2026-11-10",
+      "price": 13000,
+      "priceUsd": 1944.8,
+      "priceEur": 1735.5,
+      "currency": "CNY",
+      "unit": "TON"
     }
   ],
   "6": [
@@ -3143,6 +3183,14 @@
       "price": 3900,
       "priceUsd": 583.83,
       "priceEur": 523.77,
+      "currency": "CNY",
+      "unit": "TON"
+    },
+    {
+      "date": "2026-11-10",
+      "price": 3900,
+      "priceUsd": 583.44,
+      "priceEur": 520.65,
       "currency": "CNY",
       "unit": "TON"
     }
@@ -3675,6 +3723,14 @@
       "priceEur": 618.92,
       "currency": "CNY",
       "unit": "TON"
+    },
+    {
+      "date": "2026-11-10",
+      "price": 4608.5,
+      "priceUsd": 689.43,
+      "priceEur": 615.23,
+      "currency": "CNY",
+      "unit": "TON"
     }
   ],
   "8": [
@@ -4205,6 +4261,14 @@
       "priceEur": 271.96,
       "currency": "CNY",
       "unit": "TON"
+    },
+    {
+      "date": "2026-11-10",
+      "price": 2025,
+      "priceUsd": 302.94,
+      "priceEur": 270.34,
+      "currency": "CNY",
+      "unit": "TON"
     }
   ],
   "9": [
@@ -4717,6 +4781,14 @@
       "price": 5500,
       "priceUsd": 823.35,
       "priceEur": 738.65,
+      "currency": "CNY",
+      "unit": "TON"
+    },
+    {
+      "date": "2026-11-10",
+      "price": 5500,
+      "priceUsd": 822.8,
+      "priceEur": 734.25,
       "currency": "CNY",
       "unit": "TON"
     }
@@ -5249,6 +5321,14 @@
       "priceEur": 473.41,
       "currency": "CNY",
       "unit": "TON"
+    },
+    {
+      "date": "2026-11-10",
+      "price": 3525,
+      "priceUsd": 527.34,
+      "priceEur": 470.59,
+      "currency": "CNY",
+      "unit": "TON"
     }
   ],
   "11": [
@@ -5777,6 +5857,14 @@
       "price": 1480,
       "priceUsd": 221.56,
       "priceEur": 198.76,
+      "currency": "CNY",
+      "unit": "TON"
+    },
+    {
+      "date": "2026-11-10",
+      "price": 1480,
+      "priceUsd": 221.41,
+      "priceEur": 197.58,
       "currency": "CNY",
       "unit": "TON"
     }
@@ -6309,6 +6397,14 @@
       "priceEur": 1114.69,
       "currency": "CNY",
       "unit": "TON"
+    },
+    {
+      "date": "2026-11-10",
+      "price": 8300,
+      "priceUsd": 1241.68,
+      "priceEur": 1108.05,
+      "currency": "CNY",
+      "unit": "TON"
     }
   ],
   "13": [
@@ -6821,6 +6917,14 @@
       "price": 2950,
       "priceUsd": 441.62,
       "priceEur": 396.19,
+      "currency": "CNY",
+      "unit": "TON"
+    },
+    {
+      "date": "2026-11-10",
+      "price": 2950,
+      "priceUsd": 441.32,
+      "priceEur": 393.83,
       "currency": "CNY",
       "unit": "TON"
     }
@@ -7353,6 +7457,14 @@
       "priceEur": 344.75,
       "currency": "CNY",
       "unit": "TON"
+    },
+    {
+      "date": "2026-11-10",
+      "price": 2567,
+      "priceUsd": 384.02,
+      "priceEur": 342.69,
+      "currency": "CNY",
+      "unit": "TON"
     }
   ],
   "15": [
@@ -7881,6 +7993,14 @@
       "price": 3771.5,
       "priceUsd": 564.59,
       "priceEur": 506.51,
+      "currency": "CNY",
+      "unit": "TON"
+    },
+    {
+      "date": "2026-11-10",
+      "price": 3771.5,
+      "priceUsd": 564.22,
+      "priceEur": 503.5,
       "currency": "CNY",
       "unit": "TON"
     }
